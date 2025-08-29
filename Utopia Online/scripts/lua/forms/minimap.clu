@@ -1,0 +1,397 @@
+----------------
+-- Minimap UI --
+----------------
+frmMinimap = UI_CreateForm( "frmMinimap", FALSE, 162, 183, 656, 15, TRUE, FALSE )
+UI_ShowForm( frmMinimap, TRUE )
+UI_AddFormToTemplete( frmMinimap, FORM_MAIN )
+UI_SetFormStyle( frmMinimap, 9 )
+UI_FormSetIsEscClose( frmMinimap, FALSE )
+
+-- Background radar
+imgBackground = UI_CreateCompent( frmMinimap, IMAGE_TYPE, "imgBackground", 162, 183, 0, 0 )
+UI_LoadImage( imgBackground, "texture/ui/minimap-background.png", NORMAL, 162, 183, 0, 0 )
+
+-- radar
+imgMinimapRect = UI_CreateCompent( frmMinimap, IMAGE_TYPE, "imgMinimapRect", 128, 128, 17, 26 )
+
+-- Map name
+labMapName = UI_CreateCompent( frmMinimap, LABELEX_TYPE, "labMapName", 50, 11, 41, 7 )
+UI_SetCaption( labMapName, "0" )
+UI_SetTextColor( labMapName, COLOR_WHITE )
+--UI_SetLabelExFont( labMapName, DEFAULT_FONT, TRUE, COLOR_WHITE )
+
+
+--加载地图坐标显示 by lh此处定义了多个显示坐标的label，程序进行随机使用一个label显示，用于防止简单的外挂，如挂船脚本
+n  = 0
+while 1 do
+	local name = "labMapPos"..n
+	labMapPos = UI_CreateCompent( frmMinimap, LABELEX_TYPE, name, 75, 23, 53, 157+10 )
+	UI_SetCaption( labMapPos, "2200, 2200" )
+	UI_SetTextColor( labMapPos, COLOR_WHITE )
+	UI_SetLabelExFont( labMapPos, FONT14, TRUE, COLOR_BLACK )
+	
+	if n~=0  then UI_SetIsShow( labMapPos, FALSE ) end
+	
+	n = n + 1
+	if n==10 then break end	
+end
+
+-- Server Time
+labClock = UI_CreateCompent( frmMinimap, LABELEX_TYPE, "labClock", 65, 23, 53, 147 )
+UI_SetCaption( labClock, "-----" )
+UI_SetTextColor(labClock, COLOR_WHITE)
+--UI_SetLabelExFont(labClock, DEFAULT_FONT, TRUE, COLOR_BLACK)
+
+imgBackground = UI_CreateCompent( frmMinimap, IMAGE_TYPE, "imgBackground", 25, 25, 3, 50 )
+UI_LoadImage( imgBackground, "texture/ui/minimap-background.png", NORMAL, 25, 25, 0, 185 )
+
+-- Minimap Buttons
+btnOpen = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnOpen", 20, 20, 115, 112 )
+--UI_LoadButtonImage( btnOpen, "texture/ui/corsairs/botton3.png", 20, 20, 0, 85, FALSE )
+--UI_SetHint( btnOpen, "World Map" )
+
+btnSearch = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnSearch", 15, 15, 8, 82 )
+UI_LoadButtonImage( btnSearch, "texture/ui/minimap-background.png", 14, 14, 21, 213, TRUE )
+UI_SetHint( btnSearch, "Radar" )
+
+btnVIP = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnVIP", 20, 20, 75+20, 112+20 )
+UI_LoadButtonImage( btnVIP, "texture/ui/corsairs/botton3.png", 20, 20, 74, 85, FALSE )
+UI_SetHint( btnVIP, "VIP Teleport" )
+
+btnPosSearch = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnPosSearch", 20, 20, 75, 112+20 )
+UI_LoadButtonImage( btnPosSearch, "texture/ui/corsairs/botton3.png", 20, 20, 74, 85, FALSE )
+UI_SetHint( btnPosSearch, "Search NPC & Monsters" )
+
+
+--打开商城button
+btnOpenStore = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnOpenStore", 98, 30, 40, 158+32 )
+UI_LoadButtonImage( btnOpenStore, "texture/ui/itemmall.png", 98, 30, 0, 0, TRUE )
+UI_SetHint( btnOpenStore, "Accessing Item Mall" )
+
+btnStall = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnStall", 96, 30, 40, 158+63)
+UI_LoadButtonImage( btnStall, "texture/ui/searchstall.png", 98, 30, 0, 0, TRUE)
+UI_SetHint( btnStall, "Search Stalls" )
+
+btnPortalTimer = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnPortalTimer",  98, 30, 40, 158+93 )
+UI_LoadButtonImage( btnPortalTimer, "texture/ui/maptimer.png", 98, 30, 0, 0, TRUE )
+UI_SetHint( btnPortalTimer, "Portal Timers" )
+
+btnBossRespawnTimer= UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnBossRespawnTimer", 98, 30, 40, 158+128 )
+UI_LoadButtonImage( btnBossRespawnTimer, "texture/ui/bosstracker.png", 98, 30, 0, 0, TRUE )
+UI_SetHint( btnBossRespawnTimer, "Monsters Respawn Timer" )
+
+panelbackdrop = UI_CreateCompent(frmMinimap, IMAGE_TYPE, "panelbackdrop", 180, 120, -40, 158+128 ) --85 to adjust length size
+
+labPanel = UI_CreateCompent(frmMinimap, LABELEX_TYPE, "labPanel",65, 65, -40, 158+128 )
+UI_SetCaption(labPanel, "")
+UI_SetTextColor(labPanel, COLOR_WHITE)
+UI_SetLabelExFont(labPanel, DEFAULT_FONT, TRUE, COLOR_BLACK)
+
+-------------------------------------------------
+-----Bosses Respawn timer --
+-------------------------------------------------
+frmBossRespawn = UI_CreateForm("frmBossRespawn", FALSE, 679, 306, 0, 0, TRUE, TRUE)
+imgPortal = UI_CreateCompent( frmBossRespawn, IMAGE_TYPE, "imgPortal", 679, 306, 0, 0 )
+UI_LoadImage( imgPortal, "texture/ui/BossRespawnForm.tga", NORMAL, 679, 306, 0, 0 )
+
+UI_ShowForm( frmBossRespawn, FALSE )
+UI_FormSetHotKey( frmBossRespawn, ALT_KEY, HOTKEY_T )
+UI_AddFormToTemplete( frmBossRespawn, FORM_MAIN )
+UI_SetIsDrag(frmBossRespawn, TRUE)
+UI_SetFormStyle( frmBossRespawn, 0 )
+
+--title
+labtitle = UI_CreateCompent( frmBossRespawn, LABELEX_TYPE, "labtitle", 47, 11, 230, 3 )
+UI_SetCaption( labtitle, "Boss Respawn: Records updating every 1 minute" )
+UI_SetTextColor( labtitle, COLOR_BLACK )
+UI_SetLabelExFont( labtitle, DEFAULT_FONT, TRUE, COLOR_WHITE )
+
+ chkSortName = UI_CreateCompent( frmBossRespawn, CHECK_TYPE, "chkSortName", 15, 9, 199, 43 )
+ UI_LoadImage( chkSortName, "texture/ui/sort-arrows.tga", UNCHECKED, 15, 15, 0, 0)
+ UI_LoadImage( chkSortName, "texture/ui/sort-arrows.tga", CHECKED, 15, 15, 0, 15)
+ UI_SetHint( chkSortName, "Sort By Name" )
+
+ chkSortStatus = UI_CreateCompent( frmBossRespawn, CHECK_TYPE, "chkSortStatus", 15, 9, 635, 43 )
+ UI_LoadImage( chkSortStatus, "texture/ui/sort-arrows.tga", UNCHECKED, 15, 15, 0, 0)
+ UI_LoadImage( chkSortStatus, "texture/ui/sort-arrows.tga", CHECKED, 15, 15, 0, 15)
+ UI_SetHint( chkSortStatus, "Sort By Status" )
+
+list = UI_CreateListView( frmBossRespawn, "list", 656, 236, 18, 50, 5, 1)
+UI_SetListRowHeight( list, 22 )
+id = UI_GetScroll( list )
+UI_SetIsEnabled( id, TRUE )
+UI_ListViewSetTitle( list, 0, 202, "", 0, 0, 0, 0 )
+UI_ListViewSetTitle( list, 1, 235, "", 0, 0, 0, 0 )
+UI_ListViewSetTitle( list, 2, 117, "", 0, 0, 0, 0 )
+
+UI_SetListIsMouseFollow( list, FALSE )
+
+btnClose = UI_CreateCompent( frmBossRespawn, BUTTON_TYPE, "btnClose", 14, 14, 679-19, 2 )
+UI_LoadButtonImage( btnClose, "texture/ui/PublicC.tga", 14, 14, 116, 175, TRUE )
+UI_SetButtonModalResult( btnClose, BUTTON_CLOSE )
+
+scrollid = UI_GetScroll( list )
+UI_SetSize( scrollid, 11, 1 )
+UI_LoadImage( scrollid, "texture/ui/PublicC.tga", COMPENT_BACK, 11, 1, 194, 13 )
+
+--Scroll
+id = UI_GetScrollObj( scrollid, SCROLL_UP )
+UI_LoadButtonImage( id, "texture/ui/PublicC.tga", 9, 9, 166, 0, TRUE )
+UI_SetSize( id, 9, 9 )
+
+id = UI_GetScrollObj( scrollid, SCROLL_SCROLL )
+UI_LoadImage( id, "texture/ui/PublicC.tga", COMPENT_BACK, 9, 44, 166, 9 )
+UI_SetSize( id, 9, 44 )
+
+id = UI_GetScrollObj( scrollid, SCROLL_DOWN )
+UI_LoadButtonImage( id, "texture/ui/PublicC.tga", 9, 9, 166, 0, TRUE )
+UI_SetSize( id, 9, 9 )
+
+--打开临时背包button
+--btnOpenTempBag = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnOpenTempBag", 76, 19, 3, 158 )
+--UI_LoadButtonImage( btnOpenTempBag, "texture/ui/storebutton.tga", 76, 19, 0, 0, FALSE )
+--UI_SetHint( btnSearch, "Open temporary inventory" )
+
+--打开组队面版，临时
+--	btnteam = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnteam", 48, 19, 87, 178 )
+--	UI_LoadButtonImage( btnteam, "texture/ui/store8.tga", 48, 19, 0, 76, FALSE )
+
+-----------------------------------------------------------------------
+-- 定义雷达
+-----------------------------------------------------------------------	
+-- 创建雷达表单
+frmSearch = UI_CreateForm( "frmSearch", FALSE, 212, 129, 300, 200, TRUE, FALSE )
+UI_ShowForm( frmSearch, FALSE )
+UI_AddFormToTemplete( frmSearch, FORM_MAIN )
+UI_FormSetIsEscClose( frmSearch, FALSE )
+UI_FormSetHotKey( frmSearch, ALT_KEY, HOTKEY_R )
+UI_SetIsDrag( frmSearch, TRUE )
+
+--加载图片
+imgSearch = UI_CreateCompent( frmSearch, IMAGE_TYPE, "imgSearch", 212, 129, 0, 0 )
+UI_LoadImage( imgSearch, "texture/ui/search.tga", NORMAL, 212, 129, 0, 0 )
+
+--创建关闭按钮
+btnClose = UI_CreateCompent( frmSearch, BUTTON_TYPE, "btnClose", 14, 14, 194, 3 )
+UI_LoadButtonImage( btnClose, "texture/ui/PublicC.tga", 14, 14, 116, 175, TRUE )
+UI_SetButtonModalResult( btnClose, BUTTON_CLOSE )
+
+--加载坐标输入框
+edtLeft = UI_CreateCompent( frmSearch, EDIT_TYPE, "edtLeft", 45, 11, 94, 70 )
+UI_SetTextColor( edtLeft, COLOR_WHITE )
+UI_SetEditMaxNum( edtLeft, 4 )
+UI_SetEditMaxNumVisible( edtLeft, 4 )
+
+edtRight = UI_CreateCompent( frmSearch, EDIT_TYPE, "edtRight", 25, 11, 145, 70 )
+UI_SetTextColor( edtRight, COLOR_WHITE )
+UI_SetEditMaxNum( edtRight, 4 )
+UI_SetEditMaxNumVisible( edtRight, 4 )
+
+
+--加载确定按钮
+btnYes = UI_CreateCompent( frmSearch, BUTTON_TYPE, "btnYes", 41, 19, 102, 102 )
+UI_LoadButtonImage( btnYes, "texture/ui/PublicC.tga", 41, 19, 0, 0, TRUE )
+UI_SetEditEnterButton( edtRight, btnYes )
+
+--加载取消按钮
+btnNo = UI_CreateCompent( frmSearch, BUTTON_TYPE, "btnNo", 41, 19, 150, 102 )
+UI_LoadButtonImage( btnNo, "texture/ui/PublicC.tga", 41, 19, 0, 20, TRUE )
+UI_SetButtonModalResult( btnNo, BUTTON_CLOSE )
+
+
+--创建地图选择列表
+cboMap  = UI_CreateCompent( frmSearch, COMBO_TYPE, "cboMap", 98, 20, 88, 38 )
+UI_ComboSetStyle( cboMap, TRUE )
+UI_LoadComboImage( cboMap, "", 81, 20, 106, 39, "texture/ui/search.tga", 1, 1, 130, 140, FALSE )
+UI_ComboSetTextColor( cboMap, COLOR_WHITE )
+lstMap = UI_GetList( cboMap )
+UI_SetListFontColor( lstMap, COLOR_BLACK, COLOR_BLACK )
+UI_SetSize( lstMap, 51, 60 )
+UI_SetMargin( lstMap, 16,6,16,0 )
+UI_SetListRowHeight( lstMap, 18 )
+UI_LoadImage( lstMap, "texture/ui/search.tga", COMPENT_BACK, 51, 60, 0, 133 )
+UI_AddListText( lstMap, "Phoenix Island" )
+UI_AddListText( lstMap, "Magical Ocean" )
+UI_AddListText( lstMap, "Deep Blue" )
+UI_SetListIsMouseFollow( lstMap, TRUE)
+UI_ListLoadSelectImage( lstMap, "texture/ui/SystemBotton3.tga", 79, 18, 0, 227  )
+UI_ComboSetTextColor( lstMap, COLOR_WHITE )
+
+-- Add by Mdr May 2020 - FPO beta
+chkID = UI_CreateCompent( frmSearch, CHECK_TYPE, "chkID", 10, 10, 25, 106 )
+UI_LoadImage( chkID, "texture/ui/QQ2.tga", UNCHECKED, 10, 10, 40, 231 )
+UI_LoadImage( chkID, "texture/ui/QQ2.tga", CHECKED, 10, 10, 52, 231 )
+UI_SetHint( chkID, "Auto-trace or not?" )----------------
+-- Minimap UI --
+----------------
+-- 创建小地图表单  
+frmMinimap = UI_CreateForm( "frmMinimap", FALSE, 140, 155, 656, 15, TRUE, FALSE )
+UI_ShowForm( frmMinimap, TRUE )
+UI_AddFormToTemplete( frmMinimap, FORM_MAIN )
+UI_SetFormStyle( frmMinimap, 9 )---右上
+UI_FormSetIsEscClose( frmMinimap, FALSE )
+
+-- 加载图片
+imgMinimapT = UI_CreateCompent( frmMinimap, IMAGE_TYPE, "imgMinimapT", 140, 9, 0, 0 )
+UI_LoadImage( imgMinimapT, "texture/ui/ShipBuild4.dds", NORMAL, 140, 9, 0, 191 )
+
+imgMinimapN = UI_CreateCompent( frmMinimap, IMAGE_TYPE, "imgMinimapN", 13, 15, 65, 2 )
+UI_LoadImage( imgMinimapN, "texture/ui/main800.tga", NORMAL, 13, 15, 6, 184 )
+
+imgMinimapD = UI_CreateCompent( frmMinimap, IMAGE_TYPE, "imgMinimapD", 140, 22, 0, 133 )
+UI_LoadImage( imgMinimapD, "texture/ui/ShipBuild4.dds", NORMAL, 140, 22, 0, 223 )
+
+imgMinimapL = UI_CreateCompent( frmMinimap, IMAGE_TYPE, "imgMinimapL", 8, 156, 0, 0 )
+UI_LoadImage( imgMinimapL, "texture/ui/ShipBuild4.dds", NORMAL, 8, 156, 220, 88 )
+
+imgMinimapR = UI_CreateCompent( frmMinimap, IMAGE_TYPE, "imgMinimapR", 8, 156, 132, 0 )
+UI_LoadImage( imgMinimapR, "texture/ui/ShipBuild4.dds", NORMAL, 8, 156, 245, 88 )
+
+-- 加载显示区域
+imgMinimapRect = UI_CreateCompent( frmMinimap, IMAGE_TYPE, "imgMinimapRect", 128, 128, 6, 8 )
+
+
+
+--加载地图名称显示
+labMapName = UI_CreateCompent( frmMinimap, LABELEX_TYPE, "labMapName", 51, 12, 2, 137 )
+UI_SetCaption( labMapName, "了了了了了了了" )
+UI_SetTextColor( labMapName, COLOR_WHITE )
+UI_SetLabelExFont( labMapName, DEFAULT_FONT, TRUE, COLOR_WHITE )
+
+--加载地图坐标显示 by lh此处定义了多个显示坐标的label，程序进行随机使用一个label显示，用于防止简单的外挂，如挂船脚本
+n  = 0
+while 1 do
+	local name = "labMapPos"..n
+	labMapPos = UI_CreateCompent( frmMinimap, LABELEX_TYPE, name, 79, 12, 2, 157 )
+	UI_SetCaption( labMapPos, "2200, 2200" )
+	UI_SetTextColor( labMapPos, COLOR_BLACK )
+	UI_SetLabelExFont( labMapPos, DEFAULT_FONT, TRUE, COLOR_WHITE )
+	
+	if n~=0  then UI_SetIsShow( labMapPos, FALSE ) end
+	
+	n = n + 1
+	if n==10 then break end	
+end
+
+-- Minimap Buttons
+btnOpen = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnOpen", 20, 20, 115, 112 )
+UI_LoadButtonImage( btnOpen, "texture/ui/corsairs/botton3.png", 20, 20, 0, 85, FALSE )
+UI_SetHint( btnOpen, "World Map" )
+
+btnSearch = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnSearch", 15, 15, 8, 82 )
+UI_LoadButtonImage( btnSearch, "texture/ui/minimap-background.png", 14, 14, 21, 213, TRUE )
+UI_SetHint( btnSearch, "Radar" )
+
+btnPosSearch = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnPosSearch", 20, 20, 75, 112 )
+UI_LoadButtonImage( btnPosSearch, "texture/ui/corsairs/botton3.png", 20, 20, 74, 85, FALSE )
+UI_SetHint( btnPosSearch, "Search NPC & Monsters" )
+
+btnteam = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnteam", 20, 20, 35, 112 )
+UI_LoadButtonImage( btnteam, "texture/ui/corsairs/botton3.png", 20, 20, 119, 85, FALSE )
+UI_SetHint( btnteam, "Search Party" )
+
+------------------------------------------------------------------------------------------
+-- Discord button
+------------------------------------------------------------------------------------------
+btnDiscord = UI_CreateCompent(frmMinimap, BUTTON_TYPE, "btnDiscord", 96, 24, 35, 210 )
+UI_LoadButtonImage(btnDiscord, "texture/ui/discordbtn.png", 110, 26, 0, 0, TRUE )
+------------------------------------------------------------------------------------------
+
+--打开商城button
+btnOpenStore = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnOpenStore", 98, 30, 35, 175 ) -- 41, 19, 87, 158
+UI_LoadButtonImage( btnOpenStore, "texture/ui/itemmall.png", 98, 35, 0, 0, TRUE ) -- 41, 19
+UI_SetHint( btnOpenStore, "Accessing Item Mall" )
+
+btnOpenStore = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnOpenStore", 98, 30, 35, 175 ) -- 41, 19, 87, 158
+UI_LoadButtonImage( btnOpenStore, "texture/ui/itemmall.png", 98, 35, 0, 0, TRUE ) -- 41, 19
+UI_SetHint( btnOpenStore, "Accessing Item Mall" )
+
+btnStall = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnStall",30, 30, 55, 155)
+UI_LoadButtonImage( btnStall, "texture/ui/searchstall.png", 40, 40, 0, 0, FALSE)
+UI_SetHint( btnStall, "Search Stalls" )
+
+btnPortalTimer = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnPortalTimer",  41, 19, 87, 158 )
+UI_LoadButtonImage( btnPortalTimer, "texture/ui/maptimer.png", 41, 19, 0, 0, TRUE )
+UI_SetHint( btnPortalTimer, "Portal Timers" )
+
+btnBossRespawnTimer= UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnBossRespawnTimer", 15, 15, 8, 82+60)
+UI_LoadButtonImage( btnBossRespawnTimer,  "texture/ui/corsairs/botton3.png", 20, 20, 74, 85, FALSE )
+UI_SetHint( btnBossRespawnTimer, "Monsters Respawn Timer" )
+
+--打开临时背包button
+--btnOpenTempBag = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnOpenTempBag", 76, 19, 3, 158 )
+--UI_LoadButtonImage( btnOpenTempBag, "texture/ui/storebutton.tga", 76, 19, 0, 0, FALSE )
+--UI_SetHint( btnSearch, "Open temporary inventory" )
+
+--打开组队面版，临时
+--	btnteam = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnteam", 48, 19, 87, 178 )
+--	UI_LoadButtonImage( btnteam, "texture/ui/store8.tga", 48, 19, 0, 76, FALSE )
+
+-----------------------------------------------------------------------
+-- 定义雷达
+-----------------------------------------------------------------------	
+-- 创建雷达表单
+frmSearch = UI_CreateForm( "frmSearch", FALSE, 212, 129, 300, 200, TRUE, FALSE )
+UI_ShowForm( frmSearch, FALSE )
+UI_AddFormToTemplete( frmSearch, FORM_MAIN )
+UI_FormSetIsEscClose( frmSearch, FALSE )
+UI_FormSetHotKey( frmSearch, ALT_KEY, HOTKEY_R )
+UI_SetIsDrag( frmSearch, TRUE )
+
+--加载图片
+imgSearch = UI_CreateCompent( frmSearch, IMAGE_TYPE, "imgSearch", 212, 129, 0, 0 )
+UI_LoadImage( imgSearch, "texture/ui/search.tga", NORMAL, 212, 129, 0, 0 )
+
+--创建关闭按钮
+btnClose = UI_CreateCompent( frmSearch, BUTTON_TYPE, "btnClose", 14, 14, 194, 3 )
+UI_LoadButtonImage( btnClose, "texture/ui/PublicC.tga", 14, 14, 116, 175, TRUE )
+UI_SetButtonModalResult( btnClose, BUTTON_CLOSE )
+
+--加载坐标输入框
+edtLeft = UI_CreateCompent( frmSearch, EDIT_TYPE, "edtLeft", 45, 11, 94, 70 )
+UI_SetTextColor( edtLeft, COLOR_WHITE )
+UI_SetEditMaxNum( edtLeft, 4 )
+UI_SetEditMaxNumVisible( edtLeft, 4 )
+
+edtRight = UI_CreateCompent( frmSearch, EDIT_TYPE, "edtRight", 25, 11, 145, 70 )
+UI_SetTextColor( edtRight, COLOR_WHITE )
+UI_SetEditMaxNum( edtRight, 4 )
+UI_SetEditMaxNumVisible( edtRight, 4 )
+
+
+--加载确定按钮
+btnYes = UI_CreateCompent( frmSearch, BUTTON_TYPE, "btnYes", 41, 19, 102, 102 )
+UI_LoadButtonImage( btnYes, "texture/ui/PublicC.tga", 41, 19, 0, 0, TRUE )
+UI_SetEditEnterButton( edtRight, btnYes )
+
+--加载取消按钮
+btnNo = UI_CreateCompent( frmSearch, BUTTON_TYPE, "btnNo", 41, 19, 150, 102 )
+UI_LoadButtonImage( btnNo, "texture/ui/PublicC.tga", 41, 19, 0, 20, TRUE )
+UI_SetButtonModalResult( btnNo, BUTTON_CLOSE )
+
+
+--创建地图选择列表
+cboMap  = UI_CreateCompent( frmSearch, COMBO_TYPE, "cboMap", 98, 20, 88, 38 )
+UI_ComboSetStyle( cboMap, TRUE )
+UI_LoadComboImage( cboMap, "", 81, 20, 106, 39, "texture/ui/search.tga", 1, 1, 130, 140, FALSE )
+UI_ComboSetTextColor( cboMap, COLOR_WHITE )
+lstMap = UI_GetList( cboMap )
+UI_SetListFontColor( lstMap, COLOR_BLACK, COLOR_BLACK )
+UI_SetSize( lstMap, 51, 60 )
+UI_SetMargin( lstMap, 16,6,16,0 )
+UI_SetListRowHeight( lstMap, 18 )
+UI_LoadImage( lstMap, "texture/ui/search.tga", COMPENT_BACK, 51, 60, 0, 133 )
+UI_AddListText( lstMap, "Phoenix Island" )
+UI_AddListText( lstMap, "Magical Ocean" )
+UI_AddListText( lstMap, "Deep Blue" )
+UI_SetListIsMouseFollow( lstMap, TRUE)
+UI_ListLoadSelectImage( lstMap, "texture/ui/SystemBotton3.tga", 79, 18, 0, 227  )
+UI_ComboSetTextColor( lstMap, COLOR_WHITE )
+
+-- Add by Mdr May 2020 - FPO beta
+chkID = UI_CreateCompent( frmSearch, CHECK_TYPE, "chkID", 10, 10, 25, 106 )
+UI_LoadImage( chkID, "texture/ui/QQ2.tga", UNCHECKED, 10, 10, 40, 231 )
+UI_LoadImage( chkID, "texture/ui/QQ2.tga", CHECKED, 10, 10, 52, 231 )
+UI_SetHint( chkID, "Auto-trace or not?" )
+
+

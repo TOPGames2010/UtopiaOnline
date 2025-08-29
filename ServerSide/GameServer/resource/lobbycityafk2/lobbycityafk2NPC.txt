@@ -1,0 +1,14 @@
+//Serial	NPC Name	NPC Type	Chrindex ID	Show Mini-map	Coordinates starting point	Coordination Goal	NPC placement	Region	Region ID	NPC Script	info manage	Test Status
+0	Lobby Teleporter - Jessica	1	11	7	26575,35775	26575,35775	180	Phoenix Lobby	1	0	TeleportLobby	0
+1	Chaos Mazes Nurse	1	419	3	28225,37725	28225,37725	360	Phoenix Lobby 	1	0	r_talk76x	0
+2	Chaos Administrator	1	424	0	28775,36975	28775,36975	270	Phoenix Lobby 	1	0	MightPoints	0
+3 	Blacksmith - George	1	22	1	31775,35725	31775,35725	180	Phoenix Lobby	1	0	r_trade01	0
+4	Blacksmith - Disciple	1	414	1	32125,36075	32125,36075	270	Phoenix Lobby 	1	0	gem_seller	0
+5	Gem Voucher - Combiner	1	414	1	32125,36225	32125,36225	270	Phoenix Lobby 	1	0	gem_vouchex	0
+6	Advance - Combiner	1	414	1	31475,35825	31475,35825	180	Phoenix Lobby 	1	0	gem_vouchez	0
+7	Banker - Lobby	1	16	1	29775,35775	29775,35775	180	Phoenix Lobby 	1	0	r_talk13	0
+8	Aurora Teleporter 	1	11	7	25275,38075	25275,38075	85	Phoenix Lobby	1	0	TeleportAurora	0
+9	Phoenix Scroll 	1	414	1	32225,37925	32225,37925	270	Phoenix Lobby	1	0	PhoenixScroll	0
+10	Mystery Pots 	1	414	1	32175,39775	32175,39775	270	Phoenix Lobby	1	0	MysteryPots	0
+11	Ice-Covered Weapon 	1	414	1	32125,41525	32125,41525	270	Phoenix Lobby	1	0	IceCoveredEx	0
+12	Rear Pets Exchanger	1	414	1	30625,43825	30625,43825	85	Phoenix Lobby	1	0	RearxPet	0

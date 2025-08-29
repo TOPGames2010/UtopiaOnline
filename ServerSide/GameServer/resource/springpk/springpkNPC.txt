@@ -1,0 +1,12 @@
+//Serial	NPC Name	NPC Type	Chrindex ID	Show Mini-map	Coordinates starting point	Coordination Goal	NPC placement	Region	Region ID	NPC Script	info manage	Test Status
+//1	Myth Teleporter - John	1	1349	7	8400,4500	8400,4500	180	Myth City	144	0	myth_tele	0
+//2	Azreal Combiner	1	1351	7	8900,5900	8900,5900	90	Myth City	144	0	azexchanger_01	0
+//3	Myth Combiner	1	1350	7	8900,6900	8900,6900	90	Myth City	144	0	mythexchgr_02	0
+//4	Jackpot Lottery Machine	1	838	0	9500,4800	9500,4800	180	Myth City	13	0	dglottery_1	0
+//5	Myth City Banker	1	24	0	1500,1500	1500,1500	90	Myth City	8	0	r_talk13	0
+//6	Myth City Blacksmith	1	22	1	3100,1700	3100,1700	90	Myth City	8	0	r_talk53	0
+//7	Knight Phai - GS Exchanger	1	974	0	9100,6400	9100,6400	90	Myth City	8	0	MythPKO_gsset	0
+//8	Accessory Exchanger 55	1	1349	0	1300,3700	1300,3700	360	Myth City	144	0	acc55_exc	0
+//9	Accessory Exchanger 65	1	1351	0	1800,3500	1800,3500	360	Myth City	144	0	acc65_exc	0
+//10	Accessory Upgrader	1	1352	0s	2600,2800	2600,2800	270	Myth City	144	0	acc_upg	0
+//11	Gem Quests	1	1353	0	1300,2700	1300,2700	90	Myth City	144	0	azz_quest	0

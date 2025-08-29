@@ -1,0 +1,12 @@
+diff a/Client/src/stdafx.h b/Client/src/stdafx.h	(rejected hunks)
+@@ -22,10 +22,6 @@
+ #include <vector>
+ #include <queue>
+ #include <set>
+-#include <algorithm>
+-#include <span>
+-#include <bitset>
+-#include <tuple>
+ using namespace std;
+ 
+ namespace GUI  //�������ֿռ�

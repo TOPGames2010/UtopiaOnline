@@ -1,0 +1,5 @@
+//ID	binded entity ID	incident type	entity placement location	entity placement direction	Target map name	Target map location	Activate Determinant Requirement	Name
+1	193	1	76725,60225	-1	heilong		76165,72375	1	Black Dragon Lair 1 - Black Dragon Lair 2
+2	193	1	76165,72375	-1	heilong		76725,60225	1	Black Dragon Lair 3 - Black Dragon Lair 2
+3	193	1	77625,71525	-1	heilong		76925,66925	1	Black Dragon Lair 1 - Black Dragon Lair 2
+4	193	1	76925,66925	-1	heilong		77625,71525	1	Black Dragon Lair 3 - Black Dragon Lair 2

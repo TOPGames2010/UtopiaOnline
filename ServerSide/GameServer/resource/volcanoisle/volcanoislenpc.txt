@@ -1,0 +1,1 @@
+1	F-Skill 115- Dito	1	1242	0	2900,3300	2900,3300	180	Vulcano Island	1	0	fskills	0

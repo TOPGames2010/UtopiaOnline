@@ -1,0 +1,461 @@
+--此文件中，凡是可能被多次执行的函数，函数名都要加上地图名前缀
+
+function config(map)
+	MapCanSavePos(map, 0) --设置地图是否保存角色位置（地图，坐标，方向），此设置影响该地图的所有副本
+	MapCanPK(map, 1) --设置地图是否可以PK，此设置影响该地图的所有副本
+	MapCanTeam( map, 1 )
+	MapType( map , 3 )
+	MapCopyNum(map, 1) --设置地图的副本数目，如果不调用该语句，则使用默认值1
+	SingleMapCopyPlyNum(map, 300)   --设置一个副本的玩家数
+	--MapCanTeam(map , 0)
+	MapCanStall(map , 0)
+end
+
+
+function get_map_entry_pos_chaosicicle()   --设置入口的位置的坐标（坐标（米））
+
+	local POS_X=1370
+	local POS_Y=541
+	return POS_X , POS_Y
+
+end
+
+function init_entry(map)
+    SetMapEntryMapName(map, "darkblue") --设置入口的位置（地图名）
+    SetMapEntryTime(map, "2020/01/01/1/0", "0/0/0", "0/0/30", "0/0/45") --设置入口的时间，地图对象，首次开启时间（年/月/日/时/分），以后再次开启的间隔（日/时/分，全０表示只有首次开启），每次开启到入口消失的间隔（日/时/分，全０表示永不消失），每次开启到地图关闭的间隔（日/时/分，全０表示永不关闭）。。
+
+end
+
+function after_enter_chaosicicle( role , map_copy )
+end
+
+function before_leave_chaosicicle( role )
+end
+
+--function map_copy_first_run_chaosicicle( map_copy )
+--	lua_SetCopySpecialInter(map_copy , 10000)
+--	Notice("10")
+--
+--end
+
+--function map_copy_run_chaosicicle( map_copy )
+----Notice("3")
+--local new1 = CreateChaEx(791, 120, 120, 145, 50)
+--	SetChaLifeTime(new1, 900000)
+--BickerNotice (player, "dialouge")		
+--end
+
+--每5分钟秒执行1次
+function map_copy_run_special_chaosicicle( map_copy ) 
+	local HowManyNoDead = GetMapActivePlayer(map_copy)
+	Notice("Chaos Icicle still has "..HowManyNoDead.." player(s)")
+	Every_5_minute = Every_5_minute+1
+	if Every_5_minute == 2 then -- 初级宝箱 Novice Chests
+		local Monster2 = CreateChaEx(859, 9400, 8400, 145, 60,map_copy)
+		local Monster3 = CreateChaEx(859, 15700, 9000, 145, 60,map_copy)
+		local Monster4 = CreateChaEx(859, 18100, 11100, 145, 60,map_copy)
+		local Monster5 = CreateChaEx(859, 11500, 12300, 145, 60,map_copy)
+		local Monster6 = CreateChaEx(859, 8000, 16200, 145, 60,map_copy)
+		local Monster7 = CreateChaEx(859, 15800, 15800, 145, 60,map_copy)
+		local Monster8 = CreateChaEx(859, 12600, 18000, 145, 60,map_copy)
+		local Monster9 = CreateChaEx(859, 13000, 20500, 145, 60,map_copy)
+		local Monster10 = CreateChaEx(859, 17500, 21000, 145, 60,map_copy)
+		local Monster11 = CreateChaEx(859, 7800, 222000, 145, 60,map_copy)
+		SetChaLifeTime(Monster2,299050)
+		SetChaLifeTime(Monster3,299100)
+		SetChaLifeTime(Monster4,299150)
+		SetChaLifeTime(Monster5,299200)
+		SetChaLifeTime(Monster6,299250)
+		SetChaLifeTime(Monster7,299300)
+		SetChaLifeTime(Monster8,299350)
+		SetChaLifeTime(Monster9,299400)
+		SetChaLifeTime(Monster10,299450)
+		SetChaLifeTime(Monster11,299500)
+		
+	end
+	if Every_5_minute == 3 then -- 中级宝箱 Standard Chests
+		local Monster12 = CreateChaEx(860, 9400, 8400, 145, 60,map_copy)
+		local Monster13 = CreateChaEx(860, 15700, 9000, 145, 60,map_copy)
+		local Monster14 = CreateChaEx(860, 18100, 11100, 145, 60,map_copy)
+		local Monster15 = CreateChaEx(860, 11500, 12300, 145, 60,map_copy)
+		local Monster16 = CreateChaEx(860, 8000, 16200, 145, 60,map_copy)
+		local Monster17 = CreateChaEx(860, 15800, 15800, 145, 60,map_copy)
+		local Monster18 = CreateChaEx(860, 12600, 18000, 145, 60,map_copy)
+		local Monster19 = CreateChaEx(860, 13000, 20500, 145, 60,map_copy)
+		local Monster20 = CreateChaEx(860, 17500, 21000, 145, 60,map_copy)
+		local Monster21 = CreateChaEx(860, 7800, 222000, 145, 60,map_copy)
+		SetChaLifeTime(Monster12, 299050)
+		SetChaLifeTime(Monster13, 299100)
+		SetChaLifeTime(Monster14, 299150)
+		SetChaLifeTime(Monster15, 299200)
+		SetChaLifeTime(Monster16, 299250)
+		SetChaLifeTime(Monster17, 299300)
+		SetChaLifeTime(Monster18, 299350)
+		SetChaLifeTime(Monster19, 299400)
+		SetChaLifeTime(Monster20, 299450)
+		SetChaLifeTime(Monster21, 299500)
+	end
+	if Every_5_minute == 4 then -- 高级宝箱 Expert Chests
+		local Monster22 = CreateChaEx(861, 9400, 8400, 145, 60,map_copy)
+		local Monster23 = CreateChaEx(861, 15700, 9000, 145, 60,map_copy)
+		local Monster24 = CreateChaEx(861, 18100, 11100, 145, 60,map_copy)
+		local Monster25 = CreateChaEx(861, 11500, 12300, 145, 60,map_copy)
+		local Monster26 = CreateChaEx(861, 8000, 16200, 145, 60,map_copy)
+		local Monster27 = CreateChaEx(861, 15800, 15800, 145, 60,map_copy)
+		local Monster28 = CreateChaEx(861, 12600, 18000, 145, 60,map_copy)
+		local Monster29 = CreateChaEx(861, 13000, 20500, 145, 60,map_copy)
+		local Monster30 = CreateChaEx(861, 17500, 21000, 145, 60,map_copy)
+		local Monster31 = CreateChaEx(861, 7800, 222000, 145, 60,map_copy)
+		SetChaLifeTime(Monster22, 299050)
+		SetChaLifeTime(Monster23, 299100)
+		SetChaLifeTime(Monster24, 299150)
+		SetChaLifeTime(Monster25, 299200)
+		SetChaLifeTime(Monster26, 299250)
+		SetChaLifeTime(Monster27, 299300)
+		SetChaLifeTime(Monster28, 299350)
+		SetChaLifeTime(Monster29, 299400)
+		SetChaLifeTime(Monster30, 299450)
+		SetChaLifeTime(Monster31, 299500)
+	end
+	if Every_5_minute == 5 then --新手 Newbie Mobs
+		local Monster32 = CreateChaEx(868, 8100, 8300, 145, 60,map_copy)
+		local Monster33 = CreateChaEx(872, 10200, 7100, 145, 60,map_copy)
+		local Monster34 = CreateChaEx(875, 11600, 9100, 145, 60,map_copy)
+		local Monster35 = CreateChaEx(879, 7600, 11100, 145, 60,map_copy)
+		local Monster36 = CreateChaEx(875, 6800, 15600, 145, 60,map_copy)
+		local Monster37 = CreateChaEx(879, 14000, 8400, 145, 60,map_copy)
+		local Monster38 = CreateChaEx(875, 17000, 8700, 145, 60,map_copy)
+		local Monster39 = CreateChaEx(872, 18300, 7700, 145, 60,map_copy)
+		local Monster40 = CreateChaEx(879, 18400, 11000, 145, 60,map_copy)
+		local Monster41 = CreateChaEx(875, 18200, 13500, 145, 60,map_copy)
+		local Monster42 = CreateChaEx(868, 16200, 10400, 145, 60,map_copy)
+		local Monster43 = CreateChaEx(879, 14000, 11700, 145, 60,map_copy)
+		local Monster44 = CreateChaEx(868, 9700, 13300, 145, 60,map_copy)
+		local Monster45 = CreateChaEx(879, 12700, 15100, 145, 60,map_copy)
+		local Monster46 = CreateChaEx(872, 10400, 17400, 145, 60,map_copy)
+		local Monster47 = CreateChaEx(872, 16900, 16500, 145, 60,map_copy)
+		local Monster48 = CreateChaEx(868, 14900, 17700, 145, 60,map_copy)
+		local Monster49 = CreateChaEx(872, 7400, 20000, 145, 60,map_copy)
+		local Monster50 = CreateChaEx(879, 13000, 19400, 145, 60,map_copy)
+		local Monster51 = CreateChaEx(875, 10900, 20700, 145, 60,map_copy)
+		local Monster52 = CreateChaEx(868, 9000, 23000, 145, 60,map_copy)
+		local Monster53 = CreateChaEx(875, 15200, 20200, 145, 60,map_copy)
+		local Monster54 = CreateChaEx(868, 18100, 21100, 145, 60,map_copy)
+		local Monster55 = CreateChaEx(872, 15500, 22500, 145, 60,map_copy)
+		SetChaLifeTime(Monster32,298050)
+		SetChaLifeTime(Monster33,298100)
+		SetChaLifeTime(Monster34,298150)
+		SetChaLifeTime(Monster35,298200)
+		SetChaLifeTime(Monster36,298250)
+		SetChaLifeTime(Monster37,298300)
+		SetChaLifeTime(Monster38,298350)
+		SetChaLifeTime(Monster39,298400)
+		SetChaLifeTime(Monster40,298450)
+		SetChaLifeTime(Monster41,298500)
+		SetChaLifeTime(Monster42,298550)
+		SetChaLifeTime(Monster43,298600)
+		SetChaLifeTime(Monster44,298650)
+		SetChaLifeTime(Monster45,298700)
+		SetChaLifeTime(Monster46,298750)
+		SetChaLifeTime(Monster47,298800)
+		SetChaLifeTime(Monster48,298850)
+		SetChaLifeTime(Monster49,298900)
+		SetChaLifeTime(Monster50,298950)
+		SetChaLifeTime(Monster51,299000)
+		SetChaLifeTime(Monster52,299050)
+		SetChaLifeTime(Monster53,299100)
+		SetChaLifeTime(Monster54,299050)
+		SetChaLifeTime(Monster55,299200)
+	end
+	if Every_5_minute == 6 then -- 一转角色 1st Class Mobs
+		local Monster56 = CreateChaEx(869, 8100, 8300, 145, 60,map_copy)
+		local Monster57 = CreateChaEx(873, 10200, 7100, 145, 60,map_copy)
+		local Monster58 = CreateChaEx(876, 11600, 9100, 145, 60,map_copy)
+		local Monster59 = CreateChaEx(880, 7600, 11100, 145, 60,map_copy)
+		local Monster60 = CreateChaEx(876, 6800, 15600, 145, 60,map_copy)
+		local Monster61 = CreateChaEx(880, 14000, 8400, 145, 60,map_copy)
+		local Monster62 = CreateChaEx(876, 17000, 8700, 145, 60,map_copy)
+		local Monster63 = CreateChaEx(873, 18300, 7700, 145, 60,map_copy)
+		local Monster64 = CreateChaEx(880, 18400, 11000, 145, 60,map_copy)
+		local Monster65 = CreateChaEx(876, 18200, 13500, 145, 60,map_copy)
+		local Monster66 = CreateChaEx(869, 16200, 10400, 145, 60,map_copy)
+		local Monster67 = CreateChaEx(880, 14000, 11700, 145, 60,map_copy)
+		local Monster68 = CreateChaEx(869, 9700, 13300, 145, 60,map_copy)
+		local Monster69 = CreateChaEx(880, 12700, 15100, 145, 60,map_copy)
+		local Monster70 = CreateChaEx(873, 10400, 17400, 145, 60,map_copy)
+		local Monster71 = CreateChaEx(873, 16900, 16500, 145, 60,map_copy)
+		local Monster72 = CreateChaEx(869, 14900, 17700, 145, 60,map_copy)
+		local Monster73 = CreateChaEx(873, 7400, 20000, 145, 60,map_copy)
+		local Monster74 = CreateChaEx(880, 13000, 19400, 145, 60,map_copy)
+		local Monster75 = CreateChaEx(876, 10900, 20700, 145, 60,map_copy)
+		local Monster76 = CreateChaEx(869, 9000, 23000, 145, 60,map_copy)
+		local Monster77 = CreateChaEx(876, 15200, 20200, 145, 60,map_copy)
+		local Monster78 = CreateChaEx(869, 18100, 21100, 145, 60,map_copy)
+		local Monster79 = CreateChaEx(873, 15500, 22500, 145, 60,map_copy)
+			SetChaLifeTime(Monster56,297050)
+			SetChaLifeTime(Monster57,297100)
+			SetChaLifeTime(Monster58,297150)
+			SetChaLifeTime(Monster59,297200)
+			SetChaLifeTime(Monster60,297250)
+			SetChaLifeTime(Monster61,297300)
+			SetChaLifeTime(Monster62,297350)
+			SetChaLifeTime(Monster63,297400)
+			SetChaLifeTime(Monster64,297450)
+			SetChaLifeTime(Monster65,297500)
+			SetChaLifeTime(Monster66,297550)
+			SetChaLifeTime(Monster67,297600)
+			SetChaLifeTime(Monster68,297650)
+			SetChaLifeTime(Monster69,297700)
+			SetChaLifeTime(Monster70,297750)
+			SetChaLifeTime(Monster71,297800)
+			SetChaLifeTime(Monster72,297850)
+			SetChaLifeTime(Monster73,297900)
+			SetChaLifeTime(Monster74,297950)
+			SetChaLifeTime(Monster75,298000)
+			SetChaLifeTime(Monster76,298050)
+			SetChaLifeTime(Monster77,298100)
+			SetChaLifeTime(Monster78,298150)
+			SetChaLifeTime(Monster79,298200)
+
+	end
+	if Every_5_minute == 7 then -- 二转角色 2nd Class Mobs
+		local Monster80 = CreateChaEx(870, 8100, 8300, 145, 60,map_copy)
+		local Monster81 = CreateChaEx(871, 10200, 7100, 145, 60,map_copy)
+		local Monster82 = CreateChaEx(874, 11600, 9100, 145, 60,map_copy)
+		local Monster83 = CreateChaEx(877, 7600, 11100, 145, 60,map_copy)
+		local Monster84 = CreateChaEx(878, 9700, 9200, 145, 60,map_copy)
+		local Monster85 = CreateChaEx(881, 12300, 7700, 145, 60,map_copy)
+		local Monster86 = CreateChaEx(874, 6800, 15600, 145, 60,map_copy)
+		local Monster87 = CreateChaEx(877, 14000, 8400, 145, 60,map_copy)
+		local Monster88 = CreateChaEx(874, 17000, 8700, 145, 60,map_copy)
+		local Monster89 = CreateChaEx(871, 18300, 7700, 145, 60,map_copy)
+		local Monster90 = CreateChaEx(877, 18400, 11000, 145, 60,map_copy)
+		local Monster91 = CreateChaEx(878, 15700, 9200, 145, 60,map_copy)
+		local Monster92 = CreateChaEx(881, 13200, 12800, 145, 60,map_copy)
+		local Monster93 = CreateChaEx(874, 18200, 13500, 145, 60,map_copy)
+		local Monster94 = CreateChaEx(870, 16200, 10400, 145, 60,map_copy)
+		local Monster95 = CreateChaEx(877, 14000, 11700, 145, 60,map_copy)
+		local Monster96 = CreateChaEx(878, 18200, 9300, 145, 60,map_copy)
+		local Monster97 = CreateChaEx(881, 16500, 14700, 145, 60,map_copy)
+		local Monster98 = CreateChaEx(870, 9700, 13300, 145, 60,map_copy)
+		local Monster99 = CreateChaEx(877, 12700, 15100, 145, 60,map_copy)
+		local Monster100 = CreateChaEx(871, 10400, 17400, 145, 60,map_copy)
+		local Monster101 = CreateChaEx(878, 10500, 15500, 145, 60,map_copy)
+		local Monster102 = CreateChaEx(881, 8000, 17000, 145, 60,map_copy)
+		local Monster103 = CreateChaEx(871, 16900, 16500, 145, 60,map_copy)
+		local Monster104 = CreateChaEx(870, 14900, 17700, 145, 60,map_copy)
+		local Monster105 = CreateChaEx(871, 7400, 20000, 145, 60,map_copy)
+		local Monster106 = CreateChaEx(878, 11700, 22400, 145, 60,map_copy)
+		local Monster107 = CreateChaEx(881, 13000, 17400, 145, 60,map_copy)
+		local Monster108 = CreateChaEx(877, 13000, 19400, 145, 60,map_copy)
+		local Monster109 = CreateChaEx(874, 10900, 20700, 145, 60,map_copy)
+		local Monster110 = CreateChaEx(870, 9000, 23000, 145, 60,map_copy)
+		local Monster111 = CreateChaEx(874, 15200, 20200, 145, 60,map_copy)
+		local Monster112 = CreateChaEx(870, 18100, 21100, 145, 60,map_copy)
+		local Monster113 = CreateChaEx(871, 15500, 22500, 145, 60,map_copy)
+		local Monster114 = CreateChaEx(878, 16800, 19800, 145, 60,map_copy)
+		local Monster115 = CreateChaEx(881, 7500, 22000, 145, 60,map_copy)
+			SetChaLifeTime(Monster80,296050)
+			SetChaLifeTime(Monster81,296100)
+			SetChaLifeTime(Monster82,296150)
+			SetChaLifeTime(Monster83,296200)
+			SetChaLifeTime(Monster84,296250)
+			SetChaLifeTime(Monster85,296300)
+			SetChaLifeTime(Monster86,296350)
+			SetChaLifeTime(Monster87,296400)
+			SetChaLifeTime(Monster88,296450)
+			SetChaLifeTime(Monster89,296500)
+			SetChaLifeTime(Monster90,296550)
+			SetChaLifeTime(Monster91,296600)
+			SetChaLifeTime(Monster92,296650)
+			SetChaLifeTime(Monster93,296700)
+			SetChaLifeTime(Monster94,296750)
+			SetChaLifeTime(Monster95,296800)
+			SetChaLifeTime(Monster96,296850)
+			SetChaLifeTime(Monster97,296900)
+			SetChaLifeTime(Monster98,296950)
+			SetChaLifeTime(Monster99,297000)
+			SetChaLifeTime(Monster100,297050)
+			SetChaLifeTime(Monster101,297100)
+			SetChaLifeTime(Monster102,297150)
+			SetChaLifeTime(Monster103,297200)
+			SetChaLifeTime(Monster104,297250)
+			SetChaLifeTime(Monster105,297300)
+			SetChaLifeTime(Monster106,297350)
+			SetChaLifeTime(Monster107,297400)
+			SetChaLifeTime(Monster108,297450)
+			SetChaLifeTime(Monster109,297500)
+			SetChaLifeTime(Monster110,297550)
+			SetChaLifeTime(Monster111,297600)
+			SetChaLifeTime(Monster112,297650)
+			SetChaLifeTime(Monster113,297700)
+			SetChaLifeTime(Monster114,297750)
+			SetChaLifeTime(Monster115,297800)
+			
+	end
+	if Every_5_minute == 8 then -- 黑龙角色 BD Mobs
+		local Monster116 =CreateChaEx(885, 10200, 7200, 145, 60,map_copy)
+		local Monster117 =CreateChaEx(883, 7900, 7900, 145, 60,map_copy)
+		local Monster118 =CreateChaEx(886, 10600, 8000, 145, 60,map_copy)
+		local Monster119 =CreateChaEx(883, 12300, 8300, 145, 60,map_copy)
+		local Monster120 =CreateChaEx(884, 9500, 9200, 145, 60,map_copy)
+		local Monster121 =CreateChaEx(885, 8200, 10700, 145, 60,map_copy)
+		local Monster122 =CreateChaEx(886, 6900, 11700, 100, 60,map_copy)
+		local Monster123 =CreateChaEx(884, 6700, 13400, 235, 60,map_copy)
+		local Monster124 =CreateChaEx(883, 6700, 16000, 10, 60,map_copy)
+		local Monster125 =CreateChaEx(886, 17000, 7500, 70, 60,map_copy)
+		local Monster126 =CreateChaEx(885, 14600, 8400, 145, 60,map_copy)
+		local Monster127 =CreateChaEx(884, 16700, 9000, 340, 60,map_copy)
+		local Monster128 =CreateChaEx(883, 16200, 10300, 145, 60,map_copy)
+		local Monster129 =CreateChaEx(883, 10800, 11800, 145, 60,map_copy)
+		local Monster130 =CreateChaEx(886, 15000, 11600, 145, 60,map_copy)
+		local Monster131 =CreateChaEx(884, 13100, 12600, 145, 60,map_copy)
+		local Monster132 =CreateChaEx(885, 9000, 13400, 355, 60,map_copy)
+		local Monster133 =CreateChaEx(885, 13500, 14000, 340, 60,map_copy)
+		local Monster134 =CreateChaEx(886, 11700, 14600, 325, 60,map_copy)
+		local Monster135 =CreateChaEx(886, 9200, 15300, 220, 60,map_copy)
+		local Monster136 =CreateChaEx(883, 16600, 15300, 235, 60,map_copy)
+		local Monster137 =CreateChaEx(886, 12500, 16500, 160, 60,map_copy)
+		local Monster138 =CreateChaEx(884, 8000, 16800, 145, 60,map_copy)
+		local Monster139 =CreateChaEx(885, 10800, 17500, 115, 60,map_copy)
+		local Monster140 =CreateChaEx(884, 14400, 17200, 220, 60,map_copy)
+		local Monster141 =CreateChaEx(885, 17500, 16900, 250, 60,map_copy)
+		local Monster142 =CreateChaEx(883, 18400, 8200, 145, 60,map_copy)
+		local Monster143 =CreateChaEx(885, 18300, 10200, 235, 60,map_copy)
+		local Monster144 =CreateChaEx(884, 18300, 12500, 145, 60,map_copy)
+		local Monster145 =CreateChaEx(886, 18000, 13700, 145, 60,map_copy)
+		local Monster146 =CreateChaEx(883, 12500, 18400, 145, 60,map_copy)
+		local Monster147 =CreateChaEx(884, 7500, 20000, 220, 60,map_copy)
+		local Monster148 =CreateChaEx(886, 10900, 20700, 235, 60,map_copy)
+		local Monster149 =CreateChaEx(884, 13000, 21400, 145, 60,map_copy)
+		local Monster150 =CreateChaEx(883, 7500, 22200, 145, 60,map_copy)
+		local Monster151 =CreateChaEx(885, 11400, 22500, 145, 60,map_copy)
+		local Monster152 =CreateChaEx(884, 15100, 20300, 145, 60,map_copy)
+		local Monster153 =CreateChaEx(886, 17500, 20600, 355, 60,map_copy)
+		local Monster154 =CreateChaEx(883, 15500, 22000, 145, 60,map_copy)
+		local Monster155 =CreateChaEx(885, 17800, 22600, 145, 60,map_copy)
+			SetChaLifeTime(Monster116,290050)
+			SetChaLifeTime(Monster117,290100)
+			SetChaLifeTime(Monster118,290150)
+			SetChaLifeTime(Monster119,290200)
+			SetChaLifeTime(Monster120,290250)
+			SetChaLifeTime(Monster121,290300)
+			SetChaLifeTime(Monster122,290350)
+			SetChaLifeTime(Monster123,290400)
+			SetChaLifeTime(Monster124,290450)
+			SetChaLifeTime(Monster125,290500)
+			SetChaLifeTime(Monster126,290550)
+			SetChaLifeTime(Monster127,290600)
+			SetChaLifeTime(Monster128,290650)
+			SetChaLifeTime(Monster129,290700)
+			SetChaLifeTime(Monster130,290750)
+			SetChaLifeTime(Monster131,290800)
+			SetChaLifeTime(Monster132,290850)
+			SetChaLifeTime(Monster133,290900)
+			SetChaLifeTime(Monster134,290950)
+			SetChaLifeTime(Monster135,291000)
+			SetChaLifeTime(Monster136,291050)
+			SetChaLifeTime(Monster137,291100)
+			SetChaLifeTime(Monster138,291150)
+			SetChaLifeTime(Monster139,291200)
+			SetChaLifeTime(Monster140,291250)
+			SetChaLifeTime(Monster141,291300)
+			SetChaLifeTime(Monster142,291350)
+			SetChaLifeTime(Monster143,291400)
+			SetChaLifeTime(Monster144,291450)
+			SetChaLifeTime(Monster145,291500)
+			SetChaLifeTime(Monster146,291550)
+			SetChaLifeTime(Monster147,291600)
+			SetChaLifeTime(Monster148,291650)
+			SetChaLifeTime(Monster149,291700)
+			SetChaLifeTime(Monster150,291750)
+			SetChaLifeTime(Monster151,291800)
+			SetChaLifeTime(Monster152,291850)
+			SetChaLifeTime(Monster153,291900)
+			SetChaLifeTime(Monster154,291950)
+			SetChaLifeTime(Monster155,292000)
+
+	end
+end
+--每5秒执行一次的
+function map_run_chaosicicle( map )
+	
+end
+
+--地图关闭时执行
+function map_copy_before_close_chaosicicle( map_copy )
+	How_Many_Active = GetMapActivePlayer(map_copy)
+	if How_Many_Active > 0 then
+		DealAllActivePlayerInMap(map_copy,"GiveSpecItem")
+	end
+	How_Many_Active = 0
+	Money_all = 5000000
+	Every_5_minute = 0
+end
+function map_copy_close_chaosicicle( map_copy )
+	ClearAllSubMapCha(map_copy)
+end
+--
+--地图开关判断——————————————————————————————————————————
+
+function can_open_entry_chaosicicle( map ) 
+--	local time = GetTickCount ( ) 
+	local Now_Time = GetNowTime()
+	if Now_Time ==14 or Now_Time == 20 then
+		return 1
+	else
+		return 1
+	end
+
+end 
+
+function GiveSpecItem( role )
+	if How_Many_Active == 0 then
+		return
+	end
+	
+	local Money_chaosicicle = Money_all/How_Many_Active
+--	SystemNotice(role,How_Many_Active)
+
+	if How_Many_Active > 5 then
+		AddMoney ( role , 0 , Money_chaosicicle )
+	--	local message = "今天的乱斗共存活了"..How_Many_Active .. "位玩家,他们每人将获得"..Money_chaosicicle .."的金钱"
+	--	SystemNotice(role,How_Many_Active)
+		return
+	end
+
+	if How_Many_Active <  6 and How_Many_Active > 1 then
+		local Item_CanGet = GetChaFreeBagGridNum ( role )
+		if Item_CanGet <= 0 then
+			GiveItemX ( role , 0 , 18011  , 1 , 4 )
+		else
+			GiveItem ( role , 0 , 18011  , 1 , 4 )
+		end
+			 
+		AddMoney ( role , 0 , Money_chaosicicle )
+		--SystemNotice(role,How_Many_Active)
+					
+		local message = "Congratulations "..cha_name.." you have earned ".. Money_chaosicicle .." gold and 1x CA Reward 1 Chest!"
+		--Notice ( message )
+		return
+	end
+	
+	if How_Many_Active == 1 then
+		local Item_CanGet = GetChaFreeBagGridNum ( role )
+		if Item_CanGet <= 1 then
+			GiveItemX ( role , 0 , 5956  , 5 , 4 )
+			GiveItemX ( role , 0 , 0854  , 50 , 4 )
+			GiveItemX ( role , 0 , 1032  , 1 , 4 )
+		else
+			GiveItem  ( role , 0 , 5956  , 5 , 4 )
+			GiveItem  ( role , 0 , 0854  , 50 , 4 )
+			GiveItem  ( role , 0 , 1032  , 1 , 4 )
+		end
+		AddMoney ( role , 0 , Money_chaosicicle )
+		local cha_name = GetChaDefaultName ( role )
+		local message = "Congratulations "..cha_name.." you have earned ".. Money_chaosicicle .." gold and 5x Random Myth Gem Chest Chest, 50x 1M Note, and 1x King of the Ring Emblem!"
+	--	SystemNotice(role,How_Many_Active)
+		SystemNotice(role,message)
+		return
+	end
+end 

@@ -1,0 +1,2 @@
+//Serial	NPC Name	NPC Type	Chrindex ID	Show Mini-map	Coordinates starting point	Coordination Goal	NPC placement	Region	Region ID	NPC Script	info manage	Test Status
+0	Farm Teleporter - Jessica	1	11	7	6400,6400	6400,6400	180	Farm Island	1	0	TeleportFarm	0

@@ -1,0 +1,54 @@
+//Serial	NPC Name	NPC Type	Chrindex ID	Show Mini-map	Coordinates starting point	Coordination Goal	NPC placement	Region	Region ID	NPC Script	info manage	Test Status
+0	Phoenix Teleporter - Jovial	1	11	7	17025,34425	17025,34425	180	Argent City	1	0	TeleportCity	0
+1	Jackpot Machine	1	838	0	20325,31625	20325,31625	180	Argent City	1	0	JackpotMachine	0
+2	Blacksmith - Goldie	1	20	1	17743,27343	17743,27343	145	Argent City	1	0	r_trade01	0
+3	Blacksmith - Disciple	1	414	1	16868,27568	16868,27568	100	Argent City	1	0	gem_seller	0
+4	Advance - Combiner	1	414	1	16843,27875	16843,27875	100	Argent City	1	0	gem_vouchez	0
+5	Physican - Ditto	1	17	11	23381,33787	23381,33787	180	Argent City	1	0	r_talk03	r_npcstate03
+6	Banker - Monica	1	16	0	20437,27218	20437,27218	180	Argent City	1	0	r_talk13	0
+7	Fairy - Shop	1	69	0	19568,34962	19568,34962	180	Argent City	1	0	Pet_Seller	0
+8	Nurse - Gina	1	29	3	22806,33756	22806,33756	180	Argent City	1	0	r_talk04	r_npcstate04
+9	Reputation Scroll	1	206	0	21625,36975	21625,36975	180	Argent City	20	0	ReputationScrl	0
+//9	Bar Waitress - Mona	1	413	0	20687,45787	20687,45787	270	Thundoria Harbor	10	0	r_talk25	0
+10	PK Potions Merchant	1	962	4	23875,35275	23875,35275	270	Argent City	1	0	leo_talkbb	0
+11	Banker - Monica	1	16	0	11012,17562	11012,17562	180	Argent City	1	0	r_talk13	0
+12	Newbie Starter	1	430	0	21575,34912	21575,34912	180	Argent City	8	0	newbie_seller	0
+//13	Monster - Tracker	1	962	12	18612,34112	18612,34112	270	Argent City	1	0	BossRecord	0
+14	Pirate Informer - Gewas	1	429	6	17225,30075	17225,30075	270	Argent City	1	0	r_talk211	0
+15	Hairstylist - Cartel	1	17	13	19937,38118	19937,38118	360	Argent City	1	0	r_talk234	0
+16	Gem Voucher - Combiner	1	414	1	17006,28050	17006,28050	100	Argent City	1	0	gem_vouchex	0
+17	Newbie Guide	1	11	0	20712,35275	20712,35275	180	Argent City	8	0	BT_NewUser001	0
+18	Job Changer - L/C	1	980	0	21150,36043	21150,36043	360	Argent City	8	0	Lance_Carsise	0
+19	Job Changer - A/P	1	983	0	22025,36050	22025,36050	360	Argent City	8	0	Phyllis_Ami	0
+20	Item Shop	1	420	1	22468,35200	22468,35200	180	Argent City	1	0	item_shopx	0
+21	Pet Fruits	1	1327	8	17676,33525	19581,33756	100	Argent City	1	0	PetExchangers1	0
+22	Lance Store		1	979	0	23325,32925	23325,32925	360	Argent City	1	0	lance_app	0
+23	Carsise Store	1	981	0	22775,32925	22775,32925	360	Argent City	1	0	carsise_app	0
+24	Phyllis Store	1	984	0	23025,32925	23025,32925		360	Argent City	1	0	phyllis_app	0
+25	Ami Store		1	985	0	22525,32925	22525,32925	360	Argent City	1	0	ami_app	0
+26	Diamond Trader	1	414	1	19918,31612	19918,31612	180	Argent City	1	0	DiamondLottery	0
+27	In Game Quest	1	414	1	20675,33606	20675,33606	180	Argent City	1	0	ServerQuest001	0
+28	Lv65 Accesories	1	414	1	17525,32775	17525,32775	100	Argent City	1	0	AccessoriesNewx	0
+29	Wings NPC	1	932	0	22225,32675	22225,32675	360	Argent City	1	0	WingsNpcx	0
+30	Ticket NPC	1	755	0	16731,34200	16731,34200	180	Argent City	1	0	TicketSeller	0
+31	Nurse - Gina	1	29	3	13087,16893	13087,168935	180	Argent City	1	0	r_talk04	r_npcstate04
+32 	Phoenix Guild - Mas	1	421	0	16225,29875	16225,29875	180	Argent City	20	0	r_talk80	0
+33	Gift Giver	1	16	0	24525,32575	24525,32575	180	Argent City	20	0	FairyCoinEx	0
+34	Grocery - Jimberry	1	17	12	21443,29800	21443,29800	180	Argent City	1	0	r_talk07	0
+35	Nurse - Gina	1	29	3	23625,14425	23625,14425	360	Argent City	1	0	r_talk04	r_npcstate04
+36	Money Exchanger	1	200	0	22025,27525	22025,27525	180	Argent City	20	0	MoneyExchangerx	0
+37	Kal Exchanger	1	449	0	26125,33775	26125,33775	180	Argent City	20	0	KalExchangerx	0
+38	Azrael - Combiner	1	414	1	18325,27075	18325,27075	180	Argent City	1	0	gem_azvouchez	0
+39	Upgraded Weapon	1	760	1	21925,28575	21925,28575	180	Argent City	1	0	UpgradedWeapx	0
+40	Upgraded Ring	1	771	1	19975,27425	19975,27425	180	Argent City	1	0	UpgradedRingx	0
+41	Christmas Tree	1	782	1	26825,55575	26825,55575	360	Argent City	1	0	XmasEvnt	0
+42	Santa Claus	1	781	1	25575,54525	25575,54525	100	Argent City	1	0	XmasEvnt2	0
+43	Lv85 Weapon Voucher	1	962	1	17625,35725	17625,35725	360	Argent City	1	0	MallWeapVouch	0
+44	Lv85 Ring Voucher NPC	1	962	1	16975,35625	16975,35625	360	Argent City	1	0	MallRingVouch	0
+45	BD Gem - Combiner	1	414	1	18025,27175	18025,27175	180	Argent City	1	0	gem_bdvouchez	0
+//39	Halloween Event	1	1824	1	21825,52825	21825,52825	360	Argent City	1	0	HallwnExc	0
+//40	Halloween Event 2	1	1823	1	21825,53725	21825,53725	180	Argent City	1	0	HallwnExc2	0
+//72	Beta - Items	1	69	0	16875,18325	16875,18325	360	Argent City	1	0	BETAnpc	0
+//73	Beta - Gems	1	69	0	17125,18325	17125,18325	360	Argent City	1	0	BETAnpc1	0
+//52	Ranking	1	1	0	18575,15575	18575,15575	360	Argent City	1	0	GlobalRanking	0
+//153	CTF Waiting Room	1	760	8	221075,288175	221075,288175	270	Argent City	1	0	CTF_NPC	0

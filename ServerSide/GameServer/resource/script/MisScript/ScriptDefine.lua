@@ -1,0 +1,53 @@
+print("--------------------------------------------------")
+print("[**] Define Files [**]")
+print("-- [Loading] ScriptDefine")
+
+InitMap()
+AddMap("garner", "Argent City")
+AddMap("magicsea", "Magical Ocean")
+AddMap("darkblue", "Deep Blue")
+AddMap("eastgoaf", "Eastern Goaf")
+AddMap("lonetower", "Lone Tower")
+AddMap("secretgarden", "Garden of Edel")
+AddMap("darkswamp", "Dark Swamp")
+AddMap("abandonedcity", "Forsaken City")
+AddMap("abandonedcity2", "Forsaken City 2")
+AddMap("abandonedcity3", "Forsaken City 3")
+AddMap("puzzleworld", "Demonic World")
+AddMap("puzzleworld2", "Demonic World 2")
+AddMap("teampk", "Arena")
+AddMap("jialebi", "Caribbean")
+AddMap("garner2", "Chaos Argent")
+AddMap("hell", "Abaddon 1")
+AddMap("hell2", "Abaddon 2")
+AddMap("hell3", "Abaddon 3")
+AddMap("hell4", "Abaddon 4")
+AddMap("hell5", "Abaddon 5")
+AddMap("guildwar", "Sacred War")
+AddMap("leiting2", "Gold Farming")
+AddMap("shalan2", "Chaos Desert")
+--AddMap("binglang2", "Icicle Mirage")
+AddMap("guildwar2", "Mini Sacred War")
+AddMap("yschurch", "Church")
+AddMap("07xmas", "Chirstmas Village")
+AddMap("07xmas2", "Converse Chirstmas Village")
+AddMap("07xmas2", "Converse Chirstmas Village")
+AddMap("PKmap", "PK Arena")
+AddMap("DreamIsland", "Dream Island")
+AddMap("starwalkway", "Starry Sky Alley")
+AddMap("L4MAP", "L4MAP")
+AddMap("heilong", "Black Dragon Lair")
+AddMap("prisonisland", "Prison Island")
+AddMap("winterland", "Winter Island")
+AddMap("farm","Refining Island")
+AddMap( "mjing1", "1st Aurora Area" ) --ID = 38
+AddMap( "mjing2", "2nd Aurora Area" ) --ID = 39
+AddMap( "mjing3", "1st Dark Area" ) --ID = 40
+AddMap( "mjing4", "2nd Dark Area" ) --ID = 41
+AddMap( "glacierpk", "Chaos Glacier" )			--ID = 42
+AddMap( "chaosicicle", "Chaos Icicle" )			--ID = 43
+AddMap( "springpk", "Chaos Spring" )			--ID = 44
+AddMap( "lobbycityafk", "Phoenix Lobby" )			--ID = 44
+AddMap( "lobbycityafk2", "Phoenix Lobby 2" )
+AddMap( "dreampk", "Chaos Dream" )
+AddMap( "snowar", "Snow War" )
